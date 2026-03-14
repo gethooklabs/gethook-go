@@ -29,6 +29,7 @@ type Source struct {
 	IngestUrl string `json:"ingest_url"`
 	Name string `json:"name"`
 	PathToken string `json:"path_token"`
+	Provider *string `json:"provider,omitempty"`
 	Status string `json:"status"`
 	VerificationConfig map[string]interface{} `json:"verification_config,omitempty"`
 }
@@ -260,6 +261,38 @@ func (o *Source) SetPathToken(v string) {
 	o.PathToken = v
 }
 
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *Source) GetProvider() string {
+	if o == nil || IsNil(o.Provider) {
+		var ret string
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Source) GetProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.Provider) {
+		return nil, false
+	}
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *Source) HasProvider() bool {
+	if o != nil && !IsNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *Source) SetProvider(v string) {
+	o.Provider = &v
+}
+
 // GetStatus returns the Status field value
 func (o *Source) GetStatus() string {
 	if o == nil {
@@ -336,6 +369,9 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize["ingest_url"] = o.IngestUrl
 	toSerialize["name"] = o.Name
 	toSerialize["path_token"] = o.PathToken
+	if !IsNil(o.Provider) {
+		toSerialize["provider"] = o.Provider
+	}
 	toSerialize["status"] = o.Status
 	if !IsNil(o.VerificationConfig) {
 		toSerialize["verification_config"] = o.VerificationConfig

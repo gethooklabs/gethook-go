@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **IngestUrl** | **string** |  | 
 **Name** | **string** |  | 
 **PathToken** | **string** |  | 
+**Provider** | Pointer to **string** |  | [optional] 
 **Status** | **string** |  | 
 **VerificationConfig** | Pointer to **map[string]interface{}** |  | [optional] 
 
@@ -198,6 +199,31 @@ and a boolean to check if the value has been set.
 
 SetPathToken sets PathToken field to given value.
 
+
+### GetProvider
+
+`func (o *Source) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *Source) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *Source) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *Source) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
 
 ### GetStatus
 

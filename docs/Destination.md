@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **CustomHeaders** | Pointer to **map[string]interface{}** |  | [optional] 
 **Id** | **string** |  | 
 **Name** | **string** |  | 
+**Preset** | Pointer to **string** |  | [optional] 
 **TimeoutSeconds** | **int32** |  | 
 **Url** | **string** |  | 
 
@@ -182,6 +183,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPreset
+
+`func (o *Destination) GetPreset() string`
+
+GetPreset returns the Preset field if non-nil, zero value otherwise.
+
+### GetPresetOk
+
+`func (o *Destination) GetPresetOk() (*string, bool)`
+
+GetPresetOk returns a tuple with the Preset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreset
+
+`func (o *Destination) SetPreset(v string)`
+
+SetPreset sets Preset field to given value.
+
+### HasPreset
+
+`func (o *Destination) HasPreset() bool`
+
+HasPreset returns a boolean if a field has been set.
 
 ### GetTimeoutSeconds
 

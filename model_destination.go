@@ -28,6 +28,7 @@ type Destination struct {
 	CustomHeaders map[string]interface{} `json:"custom_headers,omitempty"`
 	Id string `json:"id"`
 	Name string `json:"name"`
+	Preset *string `json:"preset,omitempty"`
 	TimeoutSeconds int32 `json:"timeout_seconds"`
 	Url string `json:"url"`
 }
@@ -242,6 +243,38 @@ func (o *Destination) SetName(v string) {
 	o.Name = v
 }
 
+// GetPreset returns the Preset field value if set, zero value otherwise.
+func (o *Destination) GetPreset() string {
+	if o == nil || IsNil(o.Preset) {
+		var ret string
+		return ret
+	}
+	return *o.Preset
+}
+
+// GetPresetOk returns a tuple with the Preset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Destination) GetPresetOk() (*string, bool) {
+	if o == nil || IsNil(o.Preset) {
+		return nil, false
+	}
+	return o.Preset, true
+}
+
+// HasPreset returns a boolean if a field has been set.
+func (o *Destination) HasPreset() bool {
+	if o != nil && !IsNil(o.Preset) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreset gets a reference to the given string and assigns it to the Preset field.
+func (o *Destination) SetPreset(v string) {
+	o.Preset = &v
+}
+
 // GetTimeoutSeconds returns the TimeoutSeconds field value
 func (o *Destination) GetTimeoutSeconds() int32 {
 	if o == nil {
@@ -311,6 +344,9 @@ func (o Destination) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Preset) {
+		toSerialize["preset"] = o.Preset
+	}
 	toSerialize["timeout_seconds"] = o.TimeoutSeconds
 	toSerialize["url"] = o.Url
 	return toSerialize, nil
