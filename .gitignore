@@ -1,0 +1,4 @@
+openapi.yaml
+vendor/
+*.exe
+.openapi-generator/
