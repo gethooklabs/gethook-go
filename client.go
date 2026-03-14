@@ -69,6 +69,8 @@ type APIClient struct {
 
 	OutboundEventsAPI *OutboundEventsAPIService
 
+	PlatformAPI *PlatformAPIService
+
 	RoutesAPI *RoutesAPIService
 
 	SourcesAPI *SourcesAPIService
@@ -102,6 +104,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.HealthAPI = (*HealthAPIService)(&c.common)
 	c.IngestAPI = (*IngestAPIService)(&c.common)
 	c.OutboundEventsAPI = (*OutboundEventsAPIService)(&c.common)
+	c.PlatformAPI = (*PlatformAPIService)(&c.common)
 	c.RoutesAPI = (*RoutesAPIService)(&c.common)
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
 	c.StatsAPI = (*StatsAPIService)(&c.common)
