@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Plan** | **string** |  | 
+**RetentionDays** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -133,6 +134,31 @@ and a boolean to check if the value has been set.
 
 SetPlan sets Plan field to given value.
 
+
+### GetRetentionDays
+
+`func (o *Account) GetRetentionDays() int32`
+
+GetRetentionDays returns the RetentionDays field if non-nil, zero value otherwise.
+
+### GetRetentionDaysOk
+
+`func (o *Account) GetRetentionDaysOk() (*int32, bool)`
+
+GetRetentionDaysOk returns a tuple with the RetentionDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetentionDays
+
+`func (o *Account) SetRetentionDays(v int32)`
+
+SetRetentionDays sets RetentionDays field to given value.
+
+### HasRetentionDays
+
+`func (o *Account) HasRetentionDays() bool`
+
+HasRetentionDays returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

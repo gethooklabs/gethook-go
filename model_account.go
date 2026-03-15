@@ -26,6 +26,7 @@ type Account struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
 	Plan string `json:"plan"`
+	RetentionDays *int32 `json:"retention_days,omitempty"`
 }
 
 type _Account Account
@@ -179,6 +180,38 @@ func (o *Account) SetPlan(v string) {
 	o.Plan = v
 }
 
+// GetRetentionDays returns the RetentionDays field value if set, zero value otherwise.
+func (o *Account) GetRetentionDays() int32 {
+	if o == nil || IsNil(o.RetentionDays) {
+		var ret int32
+		return ret
+	}
+	return *o.RetentionDays
+}
+
+// GetRetentionDaysOk returns a tuple with the RetentionDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetRetentionDaysOk() (*int32, bool) {
+	if o == nil || IsNil(o.RetentionDays) {
+		return nil, false
+	}
+	return o.RetentionDays, true
+}
+
+// HasRetentionDays returns a boolean if a field has been set.
+func (o *Account) HasRetentionDays() bool {
+	if o != nil && !IsNil(o.RetentionDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetRetentionDays gets a reference to the given int32 and assigns it to the RetentionDays field.
+func (o *Account) SetRetentionDays(v int32) {
+	o.RetentionDays = &v
+}
+
 func (o Account) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -196,6 +229,9 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["plan"] = o.Plan
+	if !IsNil(o.RetentionDays) {
+		toSerialize["retention_days"] = o.RetentionDays
+	}
 	return toSerialize, nil
 }
 
