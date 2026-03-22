@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountId** | **string** |  | 
-**CreatedAt** | **string** |  | 
 **Id** | **string** |  | 
-**Key** | **string** |  | 
-**KeyPrefix** | **string** |  | 
+**AccountId** | **string** |  | 
+**UserId** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
+**Role** | **string** |  | 
+**KeyPrefix** | **string** |  | 
+**CreatedAt** | **string** |  | 
 **RevokedAt** | Pointer to **string** |  | [optional] 
+**Key** | **string** | Full plaintext key — returned once at creation time only. | 
 
 ## Methods
 
 ### NewAPIKeyWithSecret
 
-`func NewAPIKeyWithSecret(accountId string, createdAt string, id string, key string, keyPrefix string, name string, ) *APIKeyWithSecret`
+`func NewAPIKeyWithSecret(id string, accountId string, name string, role string, keyPrefix string, createdAt string, key string, ) *APIKeyWithSecret`
 
 NewAPIKeyWithSecret instantiates a new APIKeyWithSecret object
 This constructor will assign default values to properties that have it defined,
@@ -30,46 +32,6 @@ will change when the set of required properties is changed
 NewAPIKeyWithSecretWithDefaults instantiates a new APIKeyWithSecret object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAccountId
-
-`func (o *APIKeyWithSecret) GetAccountId() string`
-
-GetAccountId returns the AccountId field if non-nil, zero value otherwise.
-
-### GetAccountIdOk
-
-`func (o *APIKeyWithSecret) GetAccountIdOk() (*string, bool)`
-
-GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccountId
-
-`func (o *APIKeyWithSecret) SetAccountId(v string)`
-
-SetAccountId sets AccountId field to given value.
-
-
-### GetCreatedAt
-
-`func (o *APIKeyWithSecret) GetCreatedAt() string`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *APIKeyWithSecret) GetCreatedAtOk() (*string, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *APIKeyWithSecret) SetCreatedAt(v string)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
 
 ### GetId
 
@@ -91,24 +53,89 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetKey
+### GetAccountId
 
-`func (o *APIKeyWithSecret) GetKey() string`
+`func (o *APIKeyWithSecret) GetAccountId() string`
 
-GetKey returns the Key field if non-nil, zero value otherwise.
+GetAccountId returns the AccountId field if non-nil, zero value otherwise.
 
-### GetKeyOk
+### GetAccountIdOk
 
-`func (o *APIKeyWithSecret) GetKeyOk() (*string, bool)`
+`func (o *APIKeyWithSecret) GetAccountIdOk() (*string, bool)`
 
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetKey
+### SetAccountId
 
-`func (o *APIKeyWithSecret) SetKey(v string)`
+`func (o *APIKeyWithSecret) SetAccountId(v string)`
 
-SetKey sets Key field to given value.
+SetAccountId sets AccountId field to given value.
+
+
+### GetUserId
+
+`func (o *APIKeyWithSecret) GetUserId() string`
+
+GetUserId returns the UserId field if non-nil, zero value otherwise.
+
+### GetUserIdOk
+
+`func (o *APIKeyWithSecret) GetUserIdOk() (*string, bool)`
+
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserId
+
+`func (o *APIKeyWithSecret) SetUserId(v string)`
+
+SetUserId sets UserId field to given value.
+
+### HasUserId
+
+`func (o *APIKeyWithSecret) HasUserId() bool`
+
+HasUserId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *APIKeyWithSecret) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *APIKeyWithSecret) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *APIKeyWithSecret) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetRole
+
+`func (o *APIKeyWithSecret) GetRole() string`
+
+GetRole returns the Role field if non-nil, zero value otherwise.
+
+### GetRoleOk
+
+`func (o *APIKeyWithSecret) GetRoleOk() (*string, bool)`
+
+GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRole
+
+`func (o *APIKeyWithSecret) SetRole(v string)`
+
+SetRole sets Role field to given value.
 
 
 ### GetKeyPrefix
@@ -131,24 +158,24 @@ and a boolean to check if the value has been set.
 SetKeyPrefix sets KeyPrefix field to given value.
 
 
-### GetName
+### GetCreatedAt
 
-`func (o *APIKeyWithSecret) GetName() string`
+`func (o *APIKeyWithSecret) GetCreatedAt() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetCreatedAtOk
 
-`func (o *APIKeyWithSecret) GetNameOk() (*string, bool)`
+`func (o *APIKeyWithSecret) GetCreatedAtOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCreatedAt
 
-`func (o *APIKeyWithSecret) SetName(v string)`
+`func (o *APIKeyWithSecret) SetCreatedAt(v string)`
 
-SetName sets Name field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetRevokedAt
@@ -175,6 +202,26 @@ SetRevokedAt sets RevokedAt field to given value.
 `func (o *APIKeyWithSecret) HasRevokedAt() bool`
 
 HasRevokedAt returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *APIKeyWithSecret) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *APIKeyWithSecret) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *APIKeyWithSecret) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

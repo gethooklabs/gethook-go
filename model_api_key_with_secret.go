@@ -21,13 +21,16 @@ var _ MappedNullable = &APIKeyWithSecret{}
 
 // APIKeyWithSecret struct for APIKeyWithSecret
 type APIKeyWithSecret struct {
-	AccountId string `json:"account_id"`
-	CreatedAt string `json:"created_at"`
 	Id string `json:"id"`
-	Key string `json:"key"`
-	KeyPrefix string `json:"key_prefix"`
+	AccountId string `json:"account_id"`
+	UserId *string `json:"user_id,omitempty"`
 	Name string `json:"name"`
+	Role string `json:"role"`
+	KeyPrefix string `json:"key_prefix"`
+	CreatedAt string `json:"created_at"`
 	RevokedAt *string `json:"revoked_at,omitempty"`
+	// Full plaintext key — returned once at creation time only.
+	Key string `json:"key"`
 }
 
 type _APIKeyWithSecret APIKeyWithSecret
@@ -36,14 +39,15 @@ type _APIKeyWithSecret APIKeyWithSecret
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIKeyWithSecret(accountId string, createdAt string, id string, key string, keyPrefix string, name string) *APIKeyWithSecret {
+func NewAPIKeyWithSecret(id string, accountId string, name string, role string, keyPrefix string, createdAt string, key string) *APIKeyWithSecret {
 	this := APIKeyWithSecret{}
-	this.AccountId = accountId
-	this.CreatedAt = createdAt
 	this.Id = id
-	this.Key = key
-	this.KeyPrefix = keyPrefix
+	this.AccountId = accountId
 	this.Name = name
+	this.Role = role
+	this.KeyPrefix = keyPrefix
+	this.CreatedAt = createdAt
+	this.Key = key
 	return &this
 }
 
@@ -53,54 +57,6 @@ func NewAPIKeyWithSecret(accountId string, createdAt string, id string, key stri
 func NewAPIKeyWithSecretWithDefaults() *APIKeyWithSecret {
 	this := APIKeyWithSecret{}
 	return &this
-}
-
-// GetAccountId returns the AccountId field value
-func (o *APIKeyWithSecret) GetAccountId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AccountId
-}
-
-// GetAccountIdOk returns a tuple with the AccountId field value
-// and a boolean to check if the value has been set.
-func (o *APIKeyWithSecret) GetAccountIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountId, true
-}
-
-// SetAccountId sets field value
-func (o *APIKeyWithSecret) SetAccountId(v string) {
-	o.AccountId = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *APIKeyWithSecret) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *APIKeyWithSecret) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *APIKeyWithSecret) SetCreatedAt(v string) {
-	o.CreatedAt = v
 }
 
 // GetId returns the Id field value
@@ -127,28 +83,108 @@ func (o *APIKeyWithSecret) SetId(v string) {
 	o.Id = v
 }
 
-// GetKey returns the Key field value
-func (o *APIKeyWithSecret) GetKey() string {
+// GetAccountId returns the AccountId field value
+func (o *APIKeyWithSecret) GetAccountId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Key
+	return o.AccountId
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetAccountIdOk returns a tuple with the AccountId field value
 // and a boolean to check if the value has been set.
-func (o *APIKeyWithSecret) GetKeyOk() (*string, bool) {
+func (o *APIKeyWithSecret) GetAccountIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Key, true
+	return &o.AccountId, true
 }
 
-// SetKey sets field value
-func (o *APIKeyWithSecret) SetKey(v string) {
-	o.Key = v
+// SetAccountId sets field value
+func (o *APIKeyWithSecret) SetAccountId(v string) {
+	o.AccountId = v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise.
+func (o *APIKeyWithSecret) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *APIKeyWithSecret) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *APIKeyWithSecret) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *APIKeyWithSecret) SetUserId(v string) {
+	o.UserId = &v
+}
+
+// GetName returns the Name field value
+func (o *APIKeyWithSecret) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *APIKeyWithSecret) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *APIKeyWithSecret) SetName(v string) {
+	o.Name = v
+}
+
+// GetRole returns the Role field value
+func (o *APIKeyWithSecret) GetRole() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value
+// and a boolean to check if the value has been set.
+func (o *APIKeyWithSecret) GetRoleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Role, true
+}
+
+// SetRole sets field value
+func (o *APIKeyWithSecret) SetRole(v string) {
+	o.Role = v
 }
 
 // GetKeyPrefix returns the KeyPrefix field value
@@ -175,28 +211,28 @@ func (o *APIKeyWithSecret) SetKeyPrefix(v string) {
 	o.KeyPrefix = v
 }
 
-// GetName returns the Name field value
-func (o *APIKeyWithSecret) GetName() string {
+// GetCreatedAt returns the CreatedAt field value
+func (o *APIKeyWithSecret) GetCreatedAt() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.CreatedAt
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *APIKeyWithSecret) GetNameOk() (*string, bool) {
+func (o *APIKeyWithSecret) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.CreatedAt, true
 }
 
-// SetName sets field value
-func (o *APIKeyWithSecret) SetName(v string) {
-	o.Name = v
+// SetCreatedAt sets field value
+func (o *APIKeyWithSecret) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 // GetRevokedAt returns the RevokedAt field value if set, zero value otherwise.
@@ -231,6 +267,30 @@ func (o *APIKeyWithSecret) SetRevokedAt(v string) {
 	o.RevokedAt = &v
 }
 
+// GetKey returns the Key field value
+func (o *APIKeyWithSecret) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *APIKeyWithSecret) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *APIKeyWithSecret) SetKey(v string) {
+	o.Key = v
+}
+
 func (o APIKeyWithSecret) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -241,15 +301,19 @@ func (o APIKeyWithSecret) MarshalJSON() ([]byte, error) {
 
 func (o APIKeyWithSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["account_id"] = o.AccountId
-	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
-	toSerialize["key"] = o.Key
-	toSerialize["key_prefix"] = o.KeyPrefix
+	toSerialize["account_id"] = o.AccountId
+	if !IsNil(o.UserId) {
+		toSerialize["user_id"] = o.UserId
+	}
 	toSerialize["name"] = o.Name
+	toSerialize["role"] = o.Role
+	toSerialize["key_prefix"] = o.KeyPrefix
+	toSerialize["created_at"] = o.CreatedAt
 	if !IsNil(o.RevokedAt) {
 		toSerialize["revoked_at"] = o.RevokedAt
 	}
+	toSerialize["key"] = o.Key
 	return toSerialize, nil
 }
 
@@ -258,12 +322,13 @@ func (o *APIKeyWithSecret) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"account_id",
-		"created_at",
 		"id",
-		"key",
-		"key_prefix",
+		"account_id",
 		"name",
+		"role",
+		"key_prefix",
+		"created_at",
+		"key",
 	}
 
 	allProperties := make(map[string]interface{})

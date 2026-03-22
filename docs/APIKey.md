@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountId** | **string** |  | 
-**CreatedAt** | **string** |  | 
 **Id** | **string** |  | 
-**KeyPrefix** | **string** |  | 
+**AccountId** | **string** |  | 
+**UserId** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
+**Role** | **string** |  | 
+**KeyPrefix** | **string** |  | 
+**CreatedAt** | **string** |  | 
 **RevokedAt** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewAPIKey
 
-`func NewAPIKey(accountId string, createdAt string, id string, keyPrefix string, name string, ) *APIKey`
+`func NewAPIKey(id string, accountId string, name string, role string, keyPrefix string, createdAt string, ) *APIKey`
 
 NewAPIKey instantiates a new APIKey object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +31,26 @@ will change when the set of required properties is changed
 NewAPIKeyWithDefaults instantiates a new APIKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *APIKey) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *APIKey) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *APIKey) SetId(v string)`
+
+SetId sets Id field to given value.
+
 
 ### GetAccountId
 
@@ -50,44 +72,69 @@ and a boolean to check if the value has been set.
 SetAccountId sets AccountId field to given value.
 
 
-### GetCreatedAt
+### GetUserId
 
-`func (o *APIKey) GetCreatedAt() string`
+`func (o *APIKey) GetUserId() string`
 
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+GetUserId returns the UserId field if non-nil, zero value otherwise.
 
-### GetCreatedAtOk
+### GetUserIdOk
 
-`func (o *APIKey) GetCreatedAtOk() (*string, bool)`
+`func (o *APIKey) GetUserIdOk() (*string, bool)`
 
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedAt
+### SetUserId
 
-`func (o *APIKey) SetCreatedAt(v string)`
+`func (o *APIKey) SetUserId(v string)`
 
-SetCreatedAt sets CreatedAt field to given value.
+SetUserId sets UserId field to given value.
 
+### HasUserId
 
-### GetId
+`func (o *APIKey) HasUserId() bool`
 
-`func (o *APIKey) GetId() string`
+HasUserId returns a boolean if a field has been set.
 
-GetId returns the Id field if non-nil, zero value otherwise.
+### GetName
 
-### GetIdOk
+`func (o *APIKey) GetName() string`
 
-`func (o *APIKey) GetIdOk() (*string, bool)`
+GetName returns the Name field if non-nil, zero value otherwise.
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+### GetNameOk
+
+`func (o *APIKey) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetName
 
-`func (o *APIKey) SetId(v string)`
+`func (o *APIKey) SetName(v string)`
 
-SetId sets Id field to given value.
+SetName sets Name field to given value.
+
+
+### GetRole
+
+`func (o *APIKey) GetRole() string`
+
+GetRole returns the Role field if non-nil, zero value otherwise.
+
+### GetRoleOk
+
+`func (o *APIKey) GetRoleOk() (*string, bool)`
+
+GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRole
+
+`func (o *APIKey) SetRole(v string)`
+
+SetRole sets Role field to given value.
 
 
 ### GetKeyPrefix
@@ -110,24 +157,24 @@ and a boolean to check if the value has been set.
 SetKeyPrefix sets KeyPrefix field to given value.
 
 
-### GetName
+### GetCreatedAt
 
-`func (o *APIKey) GetName() string`
+`func (o *APIKey) GetCreatedAt() string`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetCreatedAtOk
 
-`func (o *APIKey) GetNameOk() (*string, bool)`
+`func (o *APIKey) GetCreatedAtOk() (*string, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetCreatedAt
 
-`func (o *APIKey) SetName(v string)`
+`func (o *APIKey) SetCreatedAt(v string)`
 
-SetName sets Name field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetRevokedAt

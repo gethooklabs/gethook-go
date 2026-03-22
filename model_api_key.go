@@ -21,11 +21,13 @@ var _ MappedNullable = &APIKey{}
 
 // APIKey struct for APIKey
 type APIKey struct {
-	AccountId string `json:"account_id"`
-	CreatedAt string `json:"created_at"`
 	Id string `json:"id"`
-	KeyPrefix string `json:"key_prefix"`
+	AccountId string `json:"account_id"`
+	UserId *string `json:"user_id,omitempty"`
 	Name string `json:"name"`
+	Role string `json:"role"`
+	KeyPrefix string `json:"key_prefix"`
+	CreatedAt string `json:"created_at"`
 	RevokedAt *string `json:"revoked_at,omitempty"`
 }
 
@@ -35,13 +37,14 @@ type _APIKey APIKey
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIKey(accountId string, createdAt string, id string, keyPrefix string, name string) *APIKey {
+func NewAPIKey(id string, accountId string, name string, role string, keyPrefix string, createdAt string) *APIKey {
 	this := APIKey{}
-	this.AccountId = accountId
-	this.CreatedAt = createdAt
 	this.Id = id
-	this.KeyPrefix = keyPrefix
+	this.AccountId = accountId
 	this.Name = name
+	this.Role = role
+	this.KeyPrefix = keyPrefix
+	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -51,54 +54,6 @@ func NewAPIKey(accountId string, createdAt string, id string, keyPrefix string, 
 func NewAPIKeyWithDefaults() *APIKey {
 	this := APIKey{}
 	return &this
-}
-
-// GetAccountId returns the AccountId field value
-func (o *APIKey) GetAccountId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AccountId
-}
-
-// GetAccountIdOk returns a tuple with the AccountId field value
-// and a boolean to check if the value has been set.
-func (o *APIKey) GetAccountIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccountId, true
-}
-
-// SetAccountId sets field value
-func (o *APIKey) SetAccountId(v string) {
-	o.AccountId = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *APIKey) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *APIKey) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *APIKey) SetCreatedAt(v string) {
-	o.CreatedAt = v
 }
 
 // GetId returns the Id field value
@@ -125,28 +80,60 @@ func (o *APIKey) SetId(v string) {
 	o.Id = v
 }
 
-// GetKeyPrefix returns the KeyPrefix field value
-func (o *APIKey) GetKeyPrefix() string {
+// GetAccountId returns the AccountId field value
+func (o *APIKey) GetAccountId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.KeyPrefix
+	return o.AccountId
 }
 
-// GetKeyPrefixOk returns a tuple with the KeyPrefix field value
+// GetAccountIdOk returns a tuple with the AccountId field value
 // and a boolean to check if the value has been set.
-func (o *APIKey) GetKeyPrefixOk() (*string, bool) {
+func (o *APIKey) GetAccountIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.KeyPrefix, true
+	return &o.AccountId, true
 }
 
-// SetKeyPrefix sets field value
-func (o *APIKey) SetKeyPrefix(v string) {
-	o.KeyPrefix = v
+// SetAccountId sets field value
+func (o *APIKey) SetAccountId(v string) {
+	o.AccountId = v
+}
+
+// GetUserId returns the UserId field value if set, zero value otherwise.
+func (o *APIKey) GetUserId() string {
+	if o == nil || IsNil(o.UserId) {
+		var ret string
+		return ret
+	}
+	return *o.UserId
+}
+
+// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *APIKey) GetUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UserId) {
+		return nil, false
+	}
+	return o.UserId, true
+}
+
+// HasUserId returns a boolean if a field has been set.
+func (o *APIKey) HasUserId() bool {
+	if o != nil && !IsNil(o.UserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
+func (o *APIKey) SetUserId(v string) {
+	o.UserId = &v
 }
 
 // GetName returns the Name field value
@@ -171,6 +158,78 @@ func (o *APIKey) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *APIKey) SetName(v string) {
 	o.Name = v
+}
+
+// GetRole returns the Role field value
+func (o *APIKey) GetRole() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value
+// and a boolean to check if the value has been set.
+func (o *APIKey) GetRoleOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Role, true
+}
+
+// SetRole sets field value
+func (o *APIKey) SetRole(v string) {
+	o.Role = v
+}
+
+// GetKeyPrefix returns the KeyPrefix field value
+func (o *APIKey) GetKeyPrefix() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.KeyPrefix
+}
+
+// GetKeyPrefixOk returns a tuple with the KeyPrefix field value
+// and a boolean to check if the value has been set.
+func (o *APIKey) GetKeyPrefixOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KeyPrefix, true
+}
+
+// SetKeyPrefix sets field value
+func (o *APIKey) SetKeyPrefix(v string) {
+	o.KeyPrefix = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *APIKey) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *APIKey) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *APIKey) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 // GetRevokedAt returns the RevokedAt field value if set, zero value otherwise.
@@ -215,11 +274,15 @@ func (o APIKey) MarshalJSON() ([]byte, error) {
 
 func (o APIKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["account_id"] = o.AccountId
-	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
-	toSerialize["key_prefix"] = o.KeyPrefix
+	toSerialize["account_id"] = o.AccountId
+	if !IsNil(o.UserId) {
+		toSerialize["user_id"] = o.UserId
+	}
 	toSerialize["name"] = o.Name
+	toSerialize["role"] = o.Role
+	toSerialize["key_prefix"] = o.KeyPrefix
+	toSerialize["created_at"] = o.CreatedAt
 	if !IsNil(o.RevokedAt) {
 		toSerialize["revoked_at"] = o.RevokedAt
 	}
@@ -231,11 +294,12 @@ func (o *APIKey) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"account_id",
-		"created_at",
 		"id",
-		"key_prefix",
+		"account_id",
 		"name",
+		"role",
+		"key_prefix",
+		"created_at",
 	}
 
 	allProperties := make(map[string]interface{})

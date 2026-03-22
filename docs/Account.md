@@ -4,18 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | **string** |  | 
-**Email** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Plan** | **string** |  | 
-**RetentionDays** | Pointer to **int32** |  | [optional] 
+**RetentionDays** | **int32** |  | 
+**CreatedAt** | **string** |  | 
 
 ## Methods
 
 ### NewAccount
 
-`func NewAccount(createdAt string, id string, name string, plan string, ) *Account`
+`func NewAccount(id string, name string, plan string, retentionDays int32, createdAt string, ) *Account`
 
 NewAccount instantiates a new Account object
 This constructor will assign default values to properties that have it defined,
@@ -29,51 +28,6 @@ will change when the set of required properties is changed
 NewAccountWithDefaults instantiates a new Account object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCreatedAt
-
-`func (o *Account) GetCreatedAt() string`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *Account) GetCreatedAtOk() (*string, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *Account) SetCreatedAt(v string)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetEmail
-
-`func (o *Account) GetEmail() string`
-
-GetEmail returns the Email field if non-nil, zero value otherwise.
-
-### GetEmailOk
-
-`func (o *Account) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmail
-
-`func (o *Account) SetEmail(v string)`
-
-SetEmail sets Email field to given value.
-
-### HasEmail
-
-`func (o *Account) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetId
 
@@ -154,11 +108,26 @@ and a boolean to check if the value has been set.
 
 SetRetentionDays sets RetentionDays field to given value.
 
-### HasRetentionDays
 
-`func (o *Account) HasRetentionDays() bool`
+### GetCreatedAt
 
-HasRetentionDays returns a boolean if a field has been set.
+`func (o *Account) GetCreatedAt() string`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *Account) GetCreatedAtOk() (*string, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *Account) SetCreatedAt(v string)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

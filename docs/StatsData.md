@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ByStatus** | [**[]StatsStatusItem**](StatsStatusItem.md) |  | 
 **Daily** | [**[]StatsDailyItem**](StatsDailyItem.md) |  | 
+**Totals** | [**AggregateTotals**](AggregateTotals.md) |  | 
 
 ## Methods
 
 ### NewStatsData
 
-`func NewStatsData(byStatus []StatsStatusItem, daily []StatsDailyItem, ) *StatsData`
+`func NewStatsData(byStatus []StatsStatusItem, daily []StatsDailyItem, totals AggregateTotals, ) *StatsData`
 
 NewStatsData instantiates a new StatsData object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *StatsData) SetDaily(v []StatsDailyItem)`
 
 SetDaily sets Daily field to given value.
+
+
+### GetTotals
+
+`func (o *StatsData) GetTotals() AggregateTotals`
+
+GetTotals returns the Totals field if non-nil, zero value otherwise.
+
+### GetTotalsOk
+
+`func (o *StatsData) GetTotalsOk() (*AggregateTotals, bool)`
+
+GetTotalsOk returns a tuple with the Totals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotals
+
+`func (o *StatsData) SetTotals(v AggregateTotals)`
+
+SetTotals sets Totals field to given value.
 
 
 

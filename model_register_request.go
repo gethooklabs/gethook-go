@@ -21,8 +21,8 @@ var _ MappedNullable = &RegisterRequest{}
 
 // RegisterRequest struct for RegisterRequest
 type RegisterRequest struct {
-	Email string `json:"email"`
 	Name string `json:"name"`
+	Email string `json:"email"`
 	Password string `json:"password"`
 }
 
@@ -32,10 +32,10 @@ type _RegisterRequest RegisterRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRegisterRequest(email string, name string, password string) *RegisterRequest {
+func NewRegisterRequest(name string, email string, password string) *RegisterRequest {
 	this := RegisterRequest{}
-	this.Email = email
 	this.Name = name
+	this.Email = email
 	this.Password = password
 	return &this
 }
@@ -46,30 +46,6 @@ func NewRegisterRequest(email string, name string, password string) *RegisterReq
 func NewRegisterRequestWithDefaults() *RegisterRequest {
 	this := RegisterRequest{}
 	return &this
-}
-
-// GetEmail returns the Email field value
-func (o *RegisterRequest) GetEmail() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Email
-}
-
-// GetEmailOk returns a tuple with the Email field value
-// and a boolean to check if the value has been set.
-func (o *RegisterRequest) GetEmailOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Email, true
-}
-
-// SetEmail sets field value
-func (o *RegisterRequest) SetEmail(v string) {
-	o.Email = v
 }
 
 // GetName returns the Name field value
@@ -94,6 +70,30 @@ func (o *RegisterRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RegisterRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetEmail returns the Email field value
+func (o *RegisterRequest) GetEmail() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value
+// and a boolean to check if the value has been set.
+func (o *RegisterRequest) GetEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Email, true
+}
+
+// SetEmail sets field value
+func (o *RegisterRequest) SetEmail(v string) {
+	o.Email = v
 }
 
 // GetPassword returns the Password field value
@@ -130,8 +130,8 @@ func (o RegisterRequest) MarshalJSON() ([]byte, error) {
 
 func (o RegisterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["email"] = o.Email
 	toSerialize["name"] = o.Name
+	toSerialize["email"] = o.Email
 	toSerialize["password"] = o.Password
 	return toSerialize, nil
 }
@@ -141,8 +141,8 @@ func (o *RegisterRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"email",
 		"name",
+		"email",
 		"password",
 	}
 

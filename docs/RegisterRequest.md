@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | **string** |  | 
 **Name** | **string** |  | 
+**Email** | **string** |  | 
 **Password** | **string** |  | 
 
 ## Methods
 
 ### NewRegisterRequest
 
-`func NewRegisterRequest(email string, name string, password string, ) *RegisterRequest`
+`func NewRegisterRequest(name string, email string, password string, ) *RegisterRequest`
 
 NewRegisterRequest instantiates a new RegisterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewRegisterRequestWithDefaults instantiates a new RegisterRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEmail
-
-`func (o *RegisterRequest) GetEmail() string`
-
-GetEmail returns the Email field if non-nil, zero value otherwise.
-
-### GetEmailOk
-
-`func (o *RegisterRequest) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmail
-
-`func (o *RegisterRequest) SetEmail(v string)`
-
-SetEmail sets Email field to given value.
-
 
 ### GetName
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *RegisterRequest) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetEmail
+
+`func (o *RegisterRequest) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *RegisterRequest) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *RegisterRequest) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
 
 
 ### GetPassword

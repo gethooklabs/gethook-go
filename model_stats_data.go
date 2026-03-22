@@ -23,6 +23,7 @@ var _ MappedNullable = &StatsData{}
 type StatsData struct {
 	ByStatus []StatsStatusItem `json:"by_status"`
 	Daily []StatsDailyItem `json:"daily"`
+	Totals AggregateTotals `json:"totals"`
 }
 
 type _StatsData StatsData
@@ -31,10 +32,11 @@ type _StatsData StatsData
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatsData(byStatus []StatsStatusItem, daily []StatsDailyItem) *StatsData {
+func NewStatsData(byStatus []StatsStatusItem, daily []StatsDailyItem, totals AggregateTotals) *StatsData {
 	this := StatsData{}
 	this.ByStatus = byStatus
 	this.Daily = daily
+	this.Totals = totals
 	return &this
 }
 
@@ -94,6 +96,30 @@ func (o *StatsData) SetDaily(v []StatsDailyItem) {
 	o.Daily = v
 }
 
+// GetTotals returns the Totals field value
+func (o *StatsData) GetTotals() AggregateTotals {
+	if o == nil {
+		var ret AggregateTotals
+		return ret
+	}
+
+	return o.Totals
+}
+
+// GetTotalsOk returns a tuple with the Totals field value
+// and a boolean to check if the value has been set.
+func (o *StatsData) GetTotalsOk() (*AggregateTotals, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Totals, true
+}
+
+// SetTotals sets field value
+func (o *StatsData) SetTotals(v AggregateTotals) {
+	o.Totals = v
+}
+
 func (o StatsData) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -106,6 +132,7 @@ func (o StatsData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["by_status"] = o.ByStatus
 	toSerialize["daily"] = o.Daily
+	toSerialize["totals"] = o.Totals
 	return toSerialize, nil
 }
 
@@ -116,6 +143,7 @@ func (o *StatsData) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"by_status",
 		"daily",
+		"totals",
 	}
 
 	allProperties := make(map[string]interface{})

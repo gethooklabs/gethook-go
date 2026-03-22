@@ -22,6 +22,7 @@ var _ MappedNullable = &CreateAPIKeyRequest{}
 // CreateAPIKeyRequest struct for CreateAPIKeyRequest
 type CreateAPIKeyRequest struct {
 	Name string `json:"name"`
+	Role *string `json:"role,omitempty"`
 }
 
 type _CreateAPIKeyRequest CreateAPIKeyRequest
@@ -68,6 +69,38 @@ func (o *CreateAPIKeyRequest) SetName(v string) {
 	o.Name = v
 }
 
+// GetRole returns the Role field value if set, zero value otherwise.
+func (o *CreateAPIKeyRequest) GetRole() string {
+	if o == nil || IsNil(o.Role) {
+		var ret string
+		return ret
+	}
+	return *o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAPIKeyRequest) GetRoleOk() (*string, bool) {
+	if o == nil || IsNil(o.Role) {
+		return nil, false
+	}
+	return o.Role, true
+}
+
+// HasRole returns a boolean if a field has been set.
+func (o *CreateAPIKeyRequest) HasRole() bool {
+	if o != nil && !IsNil(o.Role) {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given string and assigns it to the Role field.
+func (o *CreateAPIKeyRequest) SetRole(v string) {
+	o.Role = &v
+}
+
 func (o CreateAPIKeyRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -79,6 +112,9 @@ func (o CreateAPIKeyRequest) MarshalJSON() ([]byte, error) {
 func (o CreateAPIKeyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
 	return toSerialize, nil
 }
 

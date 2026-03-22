@@ -21,12 +21,11 @@ var _ MappedNullable = &Account{}
 
 // Account struct for Account
 type Account struct {
-	CreatedAt string `json:"created_at"`
-	Email *string `json:"email,omitempty"`
 	Id string `json:"id"`
 	Name string `json:"name"`
 	Plan string `json:"plan"`
-	RetentionDays *int32 `json:"retention_days,omitempty"`
+	RetentionDays int32 `json:"retention_days"`
+	CreatedAt string `json:"created_at"`
 }
 
 type _Account Account
@@ -35,12 +34,13 @@ type _Account Account
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccount(createdAt string, id string, name string, plan string) *Account {
+func NewAccount(id string, name string, plan string, retentionDays int32, createdAt string) *Account {
 	this := Account{}
-	this.CreatedAt = createdAt
 	this.Id = id
 	this.Name = name
 	this.Plan = plan
+	this.RetentionDays = retentionDays
+	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -50,62 +50,6 @@ func NewAccount(createdAt string, id string, name string, plan string) *Account 
 func NewAccountWithDefaults() *Account {
 	this := Account{}
 	return &this
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *Account) GetCreatedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *Account) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *Account) SetCreatedAt(v string) {
-	o.CreatedAt = v
-}
-
-// GetEmail returns the Email field value if set, zero value otherwise.
-func (o *Account) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
-		var ret string
-		return ret
-	}
-	return *o.Email
-}
-
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Account) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
-		return nil, false
-	}
-	return o.Email, true
-}
-
-// HasEmail returns a boolean if a field has been set.
-func (o *Account) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
-func (o *Account) SetEmail(v string) {
-	o.Email = &v
 }
 
 // GetId returns the Id field value
@@ -180,36 +124,52 @@ func (o *Account) SetPlan(v string) {
 	o.Plan = v
 }
 
-// GetRetentionDays returns the RetentionDays field value if set, zero value otherwise.
+// GetRetentionDays returns the RetentionDays field value
 func (o *Account) GetRetentionDays() int32 {
-	if o == nil || IsNil(o.RetentionDays) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.RetentionDays
+
+	return o.RetentionDays
 }
 
-// GetRetentionDaysOk returns a tuple with the RetentionDays field value if set, nil otherwise
+// GetRetentionDaysOk returns a tuple with the RetentionDays field value
 // and a boolean to check if the value has been set.
 func (o *Account) GetRetentionDaysOk() (*int32, bool) {
-	if o == nil || IsNil(o.RetentionDays) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RetentionDays, true
+	return &o.RetentionDays, true
 }
 
-// HasRetentionDays returns a boolean if a field has been set.
-func (o *Account) HasRetentionDays() bool {
-	if o != nil && !IsNil(o.RetentionDays) {
-		return true
+// SetRetentionDays sets field value
+func (o *Account) SetRetentionDays(v int32) {
+	o.RetentionDays = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *Account) GetCreatedAt() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.CreatedAt
 }
 
-// SetRetentionDays gets a reference to the given int32 and assigns it to the RetentionDays field.
-func (o *Account) SetRetentionDays(v int32) {
-	o.RetentionDays = &v
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *Account) GetCreatedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *Account) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 func (o Account) MarshalJSON() ([]byte, error) {
@@ -222,16 +182,11 @@ func (o Account) MarshalJSON() ([]byte, error) {
 
 func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["created_at"] = o.CreatedAt
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
-	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["plan"] = o.Plan
-	if !IsNil(o.RetentionDays) {
-		toSerialize["retention_days"] = o.RetentionDays
-	}
+	toSerialize["retention_days"] = o.RetentionDays
+	toSerialize["created_at"] = o.CreatedAt
 	return toSerialize, nil
 }
 
@@ -240,10 +195,11 @@ func (o *Account) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"created_at",
 		"id",
 		"name",
 		"plan",
+		"retention_days",
+		"created_at",
 	}
 
 	allProperties := make(map[string]interface{})
